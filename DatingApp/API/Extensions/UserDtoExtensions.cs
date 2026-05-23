@@ -6,7 +6,7 @@ namespace API.Extensions;
 
 public static class UserDtoExtensions
 {
-    public static UserDto AsUserDto(this AppUser user, ITokenService tokenService)
+    public static UserDto ToDto(this AppUser user, ITokenService tokenService)
     {
         return new UserDto
         {

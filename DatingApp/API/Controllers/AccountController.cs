@@ -30,7 +30,7 @@ public class AccountController(AppDbContext context, ITokenService tokenService)
         context.Users.Add(user);
         await context.SaveChangesAsync();
 
-        return Ok(user.AsUserDto(tokenService));
+        return Ok(user.ToDto(tokenService));
     }
 
     [HttpPost("login")]
@@ -50,7 +50,7 @@ public class AccountController(AppDbContext context, ITokenService tokenService)
                 return Unauthorized("Invalid password");
         }
 
-        return Ok(user.AsUserDto(tokenService));
+        return Ok(user.ToDto(tokenService));
     }
 
     private async Task<bool> EmailExists(string email)
